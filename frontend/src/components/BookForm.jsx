@@ -34,12 +34,14 @@ const BookForm = ({ mode = 'create', initialData = {}, bookId = null }) => {
   const [suggestions, setSuggestions]   = useState([]);
   const [showDropdown, setShowDropdown] = useState(false);
   const [olLoading, setOlLoading]       = useState(false);
+  const [userEditedTitle, setUserEditedTitle] = useState(mode === 'create');
   const dropdownRef = useRef(null);
 
   const debouncedTitle = useDebounce(formData.title, 400);
 
-  // Search Open Library when title changes (only in create mode or when user types)
+  // Search Open Library when title changes (only if user has typed something)
   useEffect(() => {
+    if (!userEditedTitle) return;
     if (debouncedTitle.trim().length < 2) {
       setSuggestions([]);
       setShowDropdown(false);
@@ -103,8 +105,9 @@ const BookForm = ({ mode = 'create', initialData = {}, bookId = null }) => {
     setFormData(prev => ({ ...prev, [name]: value }));
     if (errors[name]) setErrors(prev => ({ ...prev, [name]: '' }));
     // Re-open dropdown if user edits title
-    if (name === 'title' && value.trim().length >= 2) {
-      setShowDropdown(suggestions.length > 0);
+    if (name === 'title') {
+      setUserEditedTitle(true);
+      if (value.trim().length >= 2) setShowDropdown(suggestions.length > 0);
     }
   };
 

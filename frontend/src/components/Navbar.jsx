@@ -3,7 +3,8 @@ import { NavLink, Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext.jsx';
 import { useTheme } from '../context/ThemeContext.jsx';
 import api from '../services/api.js';
-import logo from '../../BiblioTech-Logo.png';
+import darkModeLogo from '../../BiblioTech-DarkModeLogo.png';
+import whiteModeLogo from '../../BiblioTech-WhiteModeLogo.png';
 
 const Navbar = () => {
   const { isAuthenticated, isAdmin, user, logout } = useAuth();
@@ -38,7 +39,7 @@ const Navbar = () => {
     <nav className="navbar" role="navigation" aria-label="Navigazione principale">
       <div className="container navbar-inner">
         <Link to="/books" className="navbar-brand">
-          <img src={logo} alt="BiblioTech Logo" className="navbar-brand-logo" />
+          <img src={theme === 'dark' ? darkModeLogo : whiteModeLogo} alt="BiblioTech Logo" className="navbar-brand-logo" />
         </Link>
 
         <ul className="navbar-links">
