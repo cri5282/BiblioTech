@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate, Link } from 'react-router-dom';
+import { useParams, useNavigate, useLocation, Link } from 'react-router-dom';
 import api from '../services/api.js';
 import Modal from '../components/Modal.jsx';
 import { useAuth } from '../context/AuthContext.jsx';
@@ -42,6 +42,7 @@ const BookDetailCover = ({ book }) => {
 const BookDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const location = useLocation();
   const { isAuthenticated } = useAuth();
 
   const [book, setBook] = useState(null);
@@ -129,7 +130,7 @@ const BookDetail = () => {
         <button
           type="button"
           className="btn btn-secondary btn-back"
-          onClick={() => navigate(-1)}
+          onClick={() => navigate(location.state?.from || -1)}
           aria-label="Torna alla pagina precedente"
         >
           Indietro
