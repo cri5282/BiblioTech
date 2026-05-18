@@ -1,11 +1,10 @@
-import React from 'react';
+import logo from '../../BiblioTech-Logo.png';
 
 const Footer = () => (
   <footer className="footer" role="contentinfo">
-    <div className="container">
-      <p>
-        BiblioTech — Gestione catalogo biblioteca
-      </p>
+    <div className="container footer-inner">
+      <img src={logo} alt="BiblioTech Logo" className="footer-logo" />
+      <p>BiblioTech — La NOSTRA biblioteca pubblica</p>
     </div>
   </footer>
 );
