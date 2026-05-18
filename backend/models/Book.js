@@ -8,6 +8,7 @@ const BookSchema = new mongoose.Schema(
     genre:    { type: String, required: true, trim: true },
     synopsis: { type: String, trim: true, default: '' },
     coverUrl: { type: String, trim: true, default: '' },
+    addedBy:  { type: mongoose.Schema.Types.ObjectId, ref: 'User', default: null },
   },
   { timestamps: true }
 );

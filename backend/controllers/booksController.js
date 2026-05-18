@@ -195,7 +195,7 @@ export const getById = async (req, res, next) => {
       return res.status(400).json({ message: 'Invalid ID format' });
     }
 
-    const book = await Book.findById(id);
+    const book = await Book.findById(id).populate('addedBy', 'username');
     if (!book) {
       return res.status(404).json({ message: 'Book not found' });
     }
@@ -216,7 +216,7 @@ export const create = async (req, res, next) => {
       return res.status(400).json({ message: 'All fields are required: title, author, year, genre' });
     }
 
-    const book = new Book({ title, author, year, genre, synopsis: synopsis || '', coverUrl: coverUrl || '' });
+    const book = new Book({ title, author, year, genre, synopsis: synopsis || '', coverUrl: coverUrl || '', addedBy: req.user?.userId || null });
     await book.save();
 
     res.status(201).json(book);

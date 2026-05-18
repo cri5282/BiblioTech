@@ -8,8 +8,8 @@ const SALT_ROUNDS = 10;
 const ACCESS_TOKEN_EXPIRY = '15m';
 const REFRESH_TOKEN_EXPIRY = '7d';
 
-const generateAccessToken = (userId, email, role) =>
-  jwt.sign({ userId, email, role, jti: randomUUID() }, process.env.JWT_SECRET, { expiresIn: ACCESS_TOKEN_EXPIRY });
+const generateAccessToken = (userId, email, role, username) =>
+  jwt.sign({ userId, email, role, username, jti: randomUUID() }, process.env.JWT_SECRET, { expiresIn: ACCESS_TOKEN_EXPIRY });
 
 const generateRefreshToken = (userId) =>
   jwt.sign({ userId, jti: randomUUID() }, process.env.JWT_REFRESH_SECRET, { expiresIn: REFRESH_TOKEN_EXPIRY });
@@ -63,7 +63,7 @@ export const login = async (req, res, next) => {
       return res.status(401).json({ message: 'Invalid credentials' });
     }
 
-    const accessToken = generateAccessToken(user._id.toString(), user.email, user.role);
+    const accessToken = generateAccessToken(user._id.toString(), user.email, user.role, user.username);
     const refreshToken = generateRefreshToken(user._id.toString());
 
     user.refreshToken = refreshToken;
@@ -96,7 +96,7 @@ export const refresh = async (req, res, next) => {
       return res.status(403).json({ message: 'Refresh token mismatch' });
     }
 
-    const newAccessToken = generateAccessToken(user._id.toString(), user.email, user.role);
+    const newAccessToken = generateAccessToken(user._id.toString(), user.email, user.role, user.username);
     const newRefreshToken = generateRefreshToken(user._id.toString());
 
     user.refreshToken = newRefreshToken;
