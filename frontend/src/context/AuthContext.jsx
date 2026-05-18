@@ -39,7 +39,7 @@ export const AuthProvider = ({ children }) => {
     localStorage.setItem('accessToken', newAccessToken);
     localStorage.setItem('refreshToken', newRefreshToken);
     const payload = decodeToken(newAccessToken);
-    setUser(payload ? { userId: payload.userId, email: payload.email, role: payload.role } : null);
+    setUser(payload ? { userId: payload.userId, email: payload.email, role: payload.role, username: payload.username } : null);
     setAccessToken(newAccessToken);
     setIsAuthenticated(true);
   }, []);
@@ -56,7 +56,7 @@ export const AuthProvider = ({ children }) => {
 
       if (storedAccessToken && !isTokenExpired(storedAccessToken)) {
         const payload = decodeToken(storedAccessToken);
-        setUser(payload ? { userId: payload.userId, email: payload.email, role: payload.role } : null);
+        setUser(payload ? { userId: payload.userId, email: payload.email, role: payload.role, username: payload.username } : null);
         setAccessToken(storedAccessToken);
         setIsAuthenticated(true);
       } else if (storedRefreshToken) {

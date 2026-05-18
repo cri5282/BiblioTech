@@ -3,6 +3,7 @@ import { NavLink, Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext.jsx';
 import { useTheme } from '../context/ThemeContext.jsx';
 import api from '../services/api.js';
+import logo from '../../BiblioTech-Logo.png';
 
 const Navbar = () => {
   const { isAuthenticated, isAdmin, user, logout } = useAuth();
@@ -37,8 +38,7 @@ const Navbar = () => {
     <nav className="navbar" role="navigation" aria-label="Navigazione principale">
       <div className="container navbar-inner">
         <Link to="/books" className="navbar-brand">
-          <span className="navbar-brand-mark">B</span>
-          Biblioteca
+          <img src={logo} alt="BiblioTech Logo" className="navbar-brand-logo" />
         </Link>
 
         <ul className="navbar-links">
@@ -71,7 +71,7 @@ const Navbar = () => {
                   aria-haspopup="true"
                 >
                   <span className="navbar-avatar">{initials}</span>
-                  <span className="navbar-avatar-name">{user?.email?.split('@')[0]}</span>
+                  <span className="navbar-avatar-name">{user?.username || user?.email?.split('@')[0]}</span>
                   <span className="navbar-avatar-chevron">{dropdownOpen ? '▲' : '▼'}</span>
                 </button>
 
