@@ -109,9 +109,7 @@ body {
   min-height: 100vh;
 }
 
-/* ============================================================
-   LAYOUT
-   ============================================================ */
+/* LAYOUT */
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -124,9 +122,7 @@ main {
   padding: 2.5rem 0 4rem;
 }
 
-/* ============================================================
-   NAVBAR
-   ============================================================ */
+/* NAVBAR */
 .navbar {
   background: var(--surface);
   border-bottom: 1px solid var(--border);
@@ -140,7 +136,7 @@ main {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 64px;
+  height: 96px;
   gap: 1rem;
 }
 
@@ -183,9 +179,7 @@ main {
   font-weight: 600;
 }
 
-/* ============================================================
-   FOOTER
-   ============================================================ */
+/* FOOTER */
 .footer {
   background: var(--surface);
   border-top: 1px solid var(--border);
@@ -195,9 +189,22 @@ main {
   font-size: 0.82rem;
 }
 
-/* ============================================================
-   BUTTONS
-   ============================================================ */
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+}
+
+.footer-logo {
+  height: 22px;
+  width: auto;
+  border-radius: 4px;
+  object-fit: contain;
+  opacity: 0.75;
+}
+
+/* BUTTONS */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -264,9 +271,7 @@ main {
   background: var(--primary-light);
 }
 
-/* ============================================================
-   BOOK GRID & CARDS
-   ============================================================ */
+/* BOOK GRID & CARDS */
 .book-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -319,7 +324,6 @@ main {
   transform: scale(1.05);
 }
 
-/* Text body below cover */
 .book-card-body {
   padding: 1rem 1.1rem 0.9rem;
   display: flex;
@@ -351,7 +355,6 @@ main {
   margin-bottom: 0.3rem;
 }
 
-/* Synopsis — clamped to 2 lines, no scroll */
 .book-card-synopsis {
   font-size: 0.75rem;
   color: var(--text-muted);
@@ -384,7 +387,6 @@ main {
   flex-shrink: 0;
 }
 
-/* Badge with scroll-left on hover */
 .badge-wrapper {
   overflow: hidden;
   max-width: 140px;
@@ -423,9 +425,127 @@ main {
   animation: badge-scroll 2s ease-in-out forwards;
 }
 
-/* ============================================================
-   BOOK DETAIL — SYNOPSIS
-   ============================================================ */
+/* BOOKLIST TOOLBAR */
+.booklist-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+}
+
+/* VIEW TOGGLE */
+.view-toggle {
+  display: flex;
+  gap: 0.25rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.2rem;
+}
+
+.view-toggle-btn {
+  background: transparent;
+  border: none;
+  border-radius: calc(var(--radius) - 2px);
+  padding: 0.35rem 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.view-toggle-btn:hover {
+  background: var(--surface-2);
+  color: var(--text);
+}
+
+.view-toggle-btn.active {
+  background: var(--primary);
+  color: #fff;
+}
+
+/* BOOK LIST VIEW */
+.book-list-view {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.book-row {
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+  transition: background 0.15s;
+}
+
+.book-row:last-child {
+  border-bottom: none;
+}
+
+.book-row:hover {
+  background: var(--surface-2);
+}
+
+.book-row td {
+  padding: 0.75rem 1.25rem;
+  vertical-align: middle;
+}
+
+.book-row-title {
+  width: 100%;
+}
+
+.book-row-link {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text);
+  text-decoration: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 35vw;
+  display: block;
+}
+
+.book-row-link:hover {
+  color: var(--primary);
+}
+
+.book-row-author {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  min-width: 10rem;
+}
+
+.book-row-year {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+  text-align: right;
+  min-width: 4rem;
+}
+
+.book-row-genre {
+  white-space: nowrap;
+  text-align: right;
+}
+
+@media (max-width: 600px) {
+  .book-row-author,
+  .book-row-year {
+    display: none;
+  }
+  .book-row-link {
+    max-width: 60vw;
+  }
+}
+
+/* BOOK DETAIL — SYNOPSIS */
 .book-detail-synopsis {
   background: var(--surface-2);
   border: 1px solid var(--border);
@@ -453,9 +573,7 @@ main {
   white-space: pre-wrap;
 }
 
-/* ============================================================
-   BOOK DETAIL
-   ============================================================ */
+/* BOOK DETAIL */
 .book-detail-card {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -537,9 +655,7 @@ main {
   flex-wrap: wrap;
 }
 
-/* ============================================================
-   FORMS
-   ============================================================ */
+/* FORMS */
 .form-group {
   margin-bottom: 1.25rem;
 }
@@ -590,9 +706,7 @@ main {
   gap: 0.3rem;
 }
 
-/* ============================================================
-   ALERTS
-   ============================================================ */
+/* ALERTS */
 .alert {
   padding: 0.85rem 1.1rem;
   border-radius: var(--radius-sm);
@@ -616,9 +730,7 @@ main {
   border: 1px solid var(--alert-success-border);
 }
 
-/* ============================================================
-   LOADING SPINNER
-   ============================================================ */
+/* LOADING SPINNER */
 .spinner-container {
   display: flex;
   flex-direction: column;
@@ -643,9 +755,7 @@ main {
   to { transform: rotate(360deg); }
 }
 
-/* ============================================================
-   MODAL
-   ============================================================ */
+/* MODAL */
 .modal-overlay {
   position: fixed;
   inset: 0;
@@ -699,9 +809,7 @@ main {
   justify-content: flex-end;
 }
 
-/* ============================================================
-   PAGE HEADERS
-   ============================================================ */
+/* PAGE HEADERS */
 .page-header {
   display: flex;
   align-items: center;
@@ -725,9 +833,7 @@ main {
   margin-bottom: 1.5rem;
 }
 
-/* ============================================================
-   SEARCH BAR
-   ============================================================ */
+/* SEARCH BAR */
 .search-wrapper {
   position: relative;
   max-width: 480px;
@@ -775,9 +881,7 @@ main {
   box-shadow: 0 0 0 3px var(--primary-glow);
 }
 
-/* ============================================================
-   EMPTY STATE
-   ============================================================ */
+/* EMPTY STATE */
 .empty-state {
   text-align: center;
   padding: 5rem 2rem;
@@ -796,9 +900,7 @@ main {
   font-size: 0.875rem;
 }
 
-/* ============================================================
-   STATS BAR
-   ============================================================ */
+/* STATS BAR */
 .stats-bar {
   display: flex;
   align-items: center;
@@ -812,9 +914,7 @@ main {
   color: var(--text-secondary);
 }
 
-/* ============================================================
-   404 PAGE
-   ============================================================ */
+/* 404 PAGE */
 .not-found {
   text-align: center;
   padding: 6rem 1rem;
@@ -835,9 +935,7 @@ main {
   color: var(--text);
 }
 
-/* ============================================================
-   LOGIN / REGISTER PAGES
-   ============================================================ */
+/* LOGIN / REGISTER PAGES */
 .auth-container {
   max-width: 420px;
   margin: 3rem auto;
@@ -882,9 +980,7 @@ main {
   text-decoration: underline;
 }
 
-/* ============================================================
-   FORM CARD (add/edit book)
-   ============================================================ */
+/* FORM CARD (add/edit book) */
 .form-card {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -911,9 +1007,7 @@ main {
   border-top: 1px solid var(--border);
 }
 
-/* ============================================================
-   RESPONSIVE
-   ============================================================ */
+/* RESPONSIVE */
 @media (max-width: 640px) {
   .page-header {
     flex-direction: column;
@@ -942,11 +1036,7 @@ main {
   }
 }
 
-/* ============================================================
-   ADMIN PANEL
-   ============================================================ */
-
-/* Navbar admin badge */
+/* ADMIN PANEL */
 .navbar-admin-badge {
   background: linear-gradient(135deg, #f59e0b, #d97706);
   color: #fff;
@@ -1107,7 +1197,6 @@ main {
   padding: 0.5rem 0;
 }
 
-/* Table */
 .admin-table-wrapper {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -1164,7 +1253,6 @@ main {
   font-size: 0.8rem;
 }
 
-/* Role badges */
 .role-badge {
   display: inline-flex;
   align-items: center;
@@ -1188,7 +1276,6 @@ main {
   border: 1px solid var(--role-user-border);
 }
 
-/* Action buttons in table */
 .admin-actions {
   display: flex;
   gap: 0.4rem;
@@ -1201,7 +1288,6 @@ main {
   font-size: 0.78rem !important;
 }
 
-/* Responsive */
 @media (max-width: 640px) {
   .admin-stats-grid {
     grid-template-columns: 1fr 1fr;
@@ -1213,9 +1299,7 @@ main {
   }
 }
 
-/* ============================================================
-   NAVBAR — AVATAR & DROPDOWN
-   ============================================================ */
+/* NAVBAR — AVATAR & DROPDOWN */
 .navbar-avatar-btn {
   display: flex;
   align-items: center;
@@ -1335,9 +1419,7 @@ main {
   color: var(--danger) !important;
 }
 
-/* ============================================================
-   PROFILE PAGE
-   ============================================================ */
+/* PROFILE PAGE */
 .profile-layout {
   display: grid;
   grid-template-columns: 280px 1fr;
@@ -1403,7 +1485,6 @@ main {
   gap: 1rem;
 }
 
-/* Collapsible sections */
 .profile-section {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -1475,9 +1556,7 @@ main {
   }
 }
 
-/* ============================================================
-   BOOK COVER — DETAIL
-   ============================================================ */
+/* BOOK COVER — DETAIL */
 .book-detail-header-inner {
   display: flex;
   align-items: flex-end;
@@ -1505,9 +1584,7 @@ main {
   }
 }
 
-/* ============================================================
-   OPEN LIBRARY AUTOCOMPLETE DROPDOWN
-   ============================================================ */
+/* OPEN LIBRARY AUTOCOMPLETE DROPDOWN */
 .ol-dropdown {
   position: absolute;
   top: calc(100% + 4px);
@@ -1611,6 +1688,12 @@ main {
   font-size: 0.7rem;
   font-weight: 800;
   letter-spacing: -0.04em;
+}
+
+.navbar-brand-logo {
+  height: 80px;
+  width: auto;
+  object-fit: contain;
 }
 
 .admin-stat-dot {
