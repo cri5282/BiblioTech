@@ -1,7 +1,7 @@
 {
-  "name": "biblioteca-app-frontend",
+  "name": "bibliotech-app-frontend",
   "version": "1.0.0",
-  "description": "Frontend SPA BiblioTech",
+  "description": "Frontend BiblioTech",
   "type": "module",
   "scripts": {
     "dev": "vite",
