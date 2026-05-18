@@ -173,6 +173,16 @@ const BookDetail = () => {
               </div>
             </div>
 
+            {book.addedBy?.username && (
+              <div className="book-detail-row">
+                <div className="book-detail-icon">Ag</div>
+                <div className="book-detail-info">
+                  <span className="book-detail-label">Aggiunto da</span>
+                  <span className="book-detail-value">{book.addedBy.username}</span>
+                </div>
+              </div>
+            )}
+
             <div className="book-detail-synopsis">
               <p className="book-detail-synopsis-label">Trama</p>
               {book.synopsis ? (
